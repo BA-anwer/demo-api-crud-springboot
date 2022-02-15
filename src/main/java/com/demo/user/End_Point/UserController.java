@@ -33,8 +33,10 @@ public class UserController {
 		return new ResponseEntity<User>(userRepository.save(user),HttpStatus.OK);	  
 	  }
 	  
-	  @PutMapping("/updateUser")
-		public User updateUser(int id,
+	  @PutMapping("/updateUser/{id}")
+		public User updateUser(
+				@PathVariable
+				int id,
 				@RequestBody
 				User user){
 			User user1 =userRepository.findById(id); 
