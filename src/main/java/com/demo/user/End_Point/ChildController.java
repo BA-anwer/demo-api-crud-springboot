@@ -37,7 +37,7 @@ public class ChildController {
 		 
 	   // return   parent.getChildren();
 		  return childRepository.findAllByParent(parent);
-	  }
+	  }   
 	  
 	  @PostMapping("/createChildWithParent/{idParent}")
 	  public ResponseEntity<Child> createUser(

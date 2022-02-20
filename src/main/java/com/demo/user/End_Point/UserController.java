@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.user.Model.LoginModel;
 import com.demo.user.Model.User;
 import com.demo.user.Repository.UserRepository;
 
@@ -22,6 +23,31 @@ import com.demo.user.Repository.UserRepository;
 public class UserController {
 	@Autowired
 	UserRepository userRepository ; 
+	
+	
+	@GetMapping("/login")
+	public ResponseEntity<?> LoginWithEmailAndPassword(
+			@io.swagger.v3.oas.annotations.parameters.RequestBody
+ LoginModel login
+	 
+			) 
+					
+	{
+		
+
+		  User user=userRepository.findByEmail(login.getEmail());
+		  if(user==null)
+		  {return ResponseEntity.ok("email not found");}
+			  if(!user.getPassword().equals(login.getPassword()))
+			  { return ResponseEntity.ok("Incorrrect password");}
+	
+		
+		 
+       
+		  
+			  return   ResponseEntity.ok(user);
+}
+	  
 	
 	  @GetMapping("/allUsers")
 	  public  List<User> getAllUsers() {

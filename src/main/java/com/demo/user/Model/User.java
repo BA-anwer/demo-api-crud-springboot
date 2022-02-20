@@ -23,10 +23,30 @@ public class User {
 	private String lastName ; 
 	private String firstName ; 
 	private String email ; 
-	private String numTel ;
+	private String password;
+    private String numTel ;
 	@OneToMany(mappedBy = "parent")
     private Set<Child> children = new HashSet<>();
 	
+	
+
+
+	public User() {
+		
+	}
+	
+	
+
+	
+	public User(String password,int idUser, String lastName, String firstName, String email, String numTel) {
+		this.idUser = idUser;
+		this.lastName = lastName;
+		this.firstName = firstName;
+		this.email = email;
+		this.numTel = numTel;
+		this.password=password;
+	}
+
 	
 	/**
 	 * @return the children
@@ -43,20 +63,21 @@ public class User {
 		this.children = children;
 	}
 
-
-	public User() {
-		
-	}
 	
-	
-	public User(int idUser, String lastName, String firstName, String email, String numTel) {
-		this.idUser = idUser;
-		this.lastName = lastName;
-		this.firstName = firstName;
-		this.email = email;
-		this.numTel = numTel;
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
 	}
 
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public int getIdUser() {
 		return idUser;
