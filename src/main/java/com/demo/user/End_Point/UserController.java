@@ -25,9 +25,9 @@ public class UserController {
 	UserRepository userRepository ; 
 	
 	
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public ResponseEntity<?> LoginWithEmailAndPassword(
-			@io.swagger.v3.oas.annotations.parameters.RequestBody
+			@RequestBody
  LoginModel login
 	 
 			) 
